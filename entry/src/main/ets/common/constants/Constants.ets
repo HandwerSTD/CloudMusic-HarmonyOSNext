@@ -9,7 +9,7 @@ export default class Constants {
   /**
    * Mini播放器高度
    */
-  static readonly HEIGHT_MINI: number = 60
+  static readonly HEIGHT_MINI: number = 64
   /**
    * 选择框高度
    */

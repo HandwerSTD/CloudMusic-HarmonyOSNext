@@ -61,7 +61,7 @@ export struct TimerButtonLarge {
       height: SheetSize.FIT_CONTENT,
       dragBar: false,
       showClose: true,
-      backgroundColor: $r('app.color.background'),
+      backgroundColor: $r('sys.color.background_secondary'),
       onDisappear: () => { this.isShow = false }
     })
   }

@@ -13,6 +13,7 @@ import Constants from "../../common/constants/Constants"
 import { PasteboardUtil, ToastUtil } from "@pura/harmony-utils"
 import { PlayerActionSheet } from "./PlayerActionSheet"
 import { likeThisSong } from "../../common/functions/play/songLike"
+import { curves } from "@kit.ArkUI"
 
 @Component
 export struct PlayingCover {
@@ -46,6 +47,7 @@ export struct PlayingCover {
       duration: changeDuration(this.song.duration)
     }),
   })
+  private phoneUISwiperController: SwiperController = new SwiperController()
 
   aboutToAppear(): void {
     setTimeout(() => {
@@ -317,7 +319,8 @@ export struct PlayingCover {
     .position({ top: 0 })
     .width('100%')
     .justifyContent(FlexAlign.SpaceBetween)
-    .padding({ top: px2vp(this.topRectHeight), left: 10, right: 10, bottom: 5 })
+    .padding({ top: px2vp(this.topRectHeight), left: 12, right: 16, bottom: 5 })
+    // 手动平移 平衡视觉重心
     .opacity(this.totalOpacity)
   }
 
@@ -350,6 +353,11 @@ export struct PlayingCover {
               .borderRadius(5)
               .aspectRatio(1)
               .shadow({ radius: 30, type: ShadowType.BLUR, offsetX: 20, offsetY: 20 })
+              .onClick(() => {
+                if (this.breakpoint == 'sm') {
+                  this.phoneUISwiperController.changeIndex(1, true)
+                }
+              })
           }
           else {
             Column()
@@ -391,7 +399,7 @@ export struct PlayingCover {
 
   @Builder PhoneUI() {
     Column() {
-      Swiper() {
+      Swiper(this.phoneUISwiperController) {
         this.SongInfo()
         LyricComponent()
           .padding({ top: px2vp(this.topRectHeight) })
@@ -407,7 +415,7 @@ export struct PlayingCover {
       .loop(false)
       .layoutWeight(1)
       .onAnimationStart((from, target) => {
-        animateTo({ duration: 300, curve: Curve.EaseInOut }, () => {
+        animateTo({ curve: curves.springMotion(0.50, 0.75) }, () => {
           this.tabPageIndex = target
         })
       })
@@ -423,7 +431,7 @@ export struct PlayingCover {
         .opacity(this.tabPageIndex == 0 ? 0.8 : 0.2)
         .padding({ top: 20, bottom: 15 })
         .justifyContent(FlexAlign.SpaceEvenly)
-        .width('90%')
+        .width('100%')
 
         if(this.tabPageIndex == 0) {
           Row({ space: 15 }) {
@@ -499,7 +507,7 @@ export struct PlayingCover {
 
 @Extend(Image) function buttonImgStyle() {
   .clickEffect({ level: ClickEffectLevel.LIGHT, scale: 0.8 })
-  .width(50)
+  .width(44)
   .fillColor(Color.White)
   .draggable(false)
 }

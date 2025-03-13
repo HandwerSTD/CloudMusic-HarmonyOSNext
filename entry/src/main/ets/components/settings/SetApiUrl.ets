@@ -19,7 +19,7 @@ export struct SetApiUrl {
       .width('100%')
       .justifyContent(FlexAlign.SpaceBetween)
       .bindSheet(this.isShowSheet, this.Sheet(), {
-        backgroundColor: $r('app.color.background'),
+        backgroundColor: $r('sys.color.background_secondary'),
         preferType: SheetType.CENTER,
         detents: [SheetSize.MEDIUM, SheetSize.LARGE],
         dragBar: true,

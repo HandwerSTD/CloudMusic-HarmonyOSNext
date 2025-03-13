@@ -35,6 +35,6 @@ export struct TopListPage {
       .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
     }
     .title('排行榜')
-    .backgroundColor($r('app.color.background'))
+    .backgroundColor($r('sys.color.background_secondary'))
   }
 }

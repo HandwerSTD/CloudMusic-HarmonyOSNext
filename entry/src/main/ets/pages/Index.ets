@@ -97,7 +97,7 @@ struct Index {
   async build() {
     Navigation(this.pageInfos) {
       Stack({ alignContent: Alignment.Bottom }) {
-        Tabs({ controller: this.tabController, index: this.tabCurrentIndex }) {
+        Tabs({ controller: this.tabController, index: $$this.tabCurrentIndex }) {
           TabContent() { Explore() }
           TabContent() { UserPlayLists() }
           TabContent() { Me() }
@@ -112,7 +112,7 @@ struct Index {
         })
 
         BottomBarComponent()
-          .padding({ left: Constants.PADDING_EDGE_DEFAULT, right: Constants.PADDING_EDGE_DEFAULT, bottom: px2vp(this.bottomRectHeight) + 35 })
+          .padding({ left: Constants.PADDING_EDGE_DEFAULT, right: Constants.PADDING_EDGE_DEFAULT, bottom: px2vp(this.bottomRectHeight) + 45 })
           .backgroundColor(Color.Transparent)
       }
     }
@@ -125,7 +125,7 @@ struct Index {
     .title(this.index == 0 ? '发现' : this.index == 1 ? '歌单' : '我的')
     .menus(this.getMenuItems())
     .hideBackButton(true)
-    .backgroundColor($r('app.color.background'))
+    .backgroundColor($r('sys.color.background_secondary'))
     .navDestination(this.PageMap)
     .toolbarConfiguration(this.ToolBar(), { backgroundBlurStyle: BlurStyle.Regular, barStyle: BarStyle.STACK, backgroundColor: Color.Transparent })
   }

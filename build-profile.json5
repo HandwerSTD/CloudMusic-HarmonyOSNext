@@ -5,13 +5,13 @@
         "name": "default",
         "type": "HarmonyOS",
         "material": {
-          "storePassword": "0000001B1FE3A8F8F584D30040BCC24511FFBFB5EB08B6284AF696034C9F665EBB8DBB2397C94F951B95A2",
-          "certpath": "D:/HMOS/Cer/CloudMusic/Key/CloudMusic.cer",
-          "keyAlias": "test",
-          "keyPassword": "0000001B9B493F8630FC0B5B1FF838EC990075C99F355F2C84C581242F6FF58FA62F60656E475F483BE0B7",
-          "profile": "D:/HMOS/Cer/CloudMusic/Key/cloudmusicRelease.p7b",
+          "certpath": "C:\\Users\\handw\\.ohos\\config\\default_CloudMusic-HarmonyOSNext_UgH0aaklyi0XJl_0ZV5qxjppZv4hk3J6fXf40kWDf8g=.cer",
+          "storePassword": "0000001B7F32F455F688409BF50324472B31358ED7DF6A880A9261642040CD0728BD5A5D5F47848FB4F6BC",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001B0899E65F284499466D6CEFE3FBF7BACBE730516A81B9F888B334A09F17F3BB73C76D287B046396",
+          "profile": "C:\\Users\\handw\\.ohos\\config\\default_CloudMusic-HarmonyOSNext_UgH0aaklyi0XJl_0ZV5qxjppZv4hk3J6fXf40kWDf8g=.p7b",
           "signAlg": "SHA256withECDSA",
-          "storeFile": "D:/HMOS/Cer/CloudMusic/Key/CloudMusic.p12"
+          "storeFile": "C:\\Users\\handw\\.ohos\\config\\default_CloudMusic-HarmonyOSNext_UgH0aaklyi0XJl_0ZV5qxjppZv4hk3J6fXf40kWDf8g=.p12"
         }
       },
       {
@@ -31,7 +31,7 @@
     "products": [
       {
         "name": "default",
-        "signingConfig": "cc",
+        "signingConfig": "default",
         "compatibleSdkVersion": "5.0.2(14)",
         "runtimeOS": "HarmonyOS",
         "buildOption": {

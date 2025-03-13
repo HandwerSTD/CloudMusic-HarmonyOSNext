@@ -105,7 +105,7 @@ export struct Me {
       minWidth: 200,
       maxWidth: 500
     })
-    .backgroundColor($r('app.color.background'))
+    .backgroundColor($r('sys.color.background_secondary'))
     .padding({ left: 20, right: 20 })
   }
 

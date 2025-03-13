@@ -105,7 +105,7 @@ export struct Explore {
             GridItem() {
               Search({
                 placeholder: '搜索内容',
-                icon: '/resources/base/media/ic_public_search_filled.svg',
+                // icon: '/resources/base/media/ic_public_search_filled.svg',
               })
                 .clickEffect({ level: ClickEffectLevel.LIGHT, scale: 0.9 })
                 .focusable(false)

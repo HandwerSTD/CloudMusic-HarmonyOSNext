@@ -139,11 +139,11 @@ export struct CloudPage {
       .opacity(this.pageOpacity)
       .width('100%')
       .height('100%')
-      .backgroundColor($r('app.color.background'))
+      .backgroundColor($r('sys.color.background_secondary'))
     }
     .title('音乐云盘')
     .menus(this.menuItem)
-    .backgroundColor($r('app.color.background'))
+    .backgroundColor($r('sys.color.background_secondary'))
   }
 
   @Builder

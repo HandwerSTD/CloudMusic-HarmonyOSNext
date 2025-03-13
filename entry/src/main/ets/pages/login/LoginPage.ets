@@ -45,13 +45,13 @@ export struct LoginPage {
         .height('100%')
         .width('100%')
       }
-      .backgroundColor($r('app.color.background'))
+      .backgroundColor($r('sys.color.background_secondary'))
       .width('100%')
       .height('100%')
       .padding({ top: Constants.PADDING_EDGE_TEXT })
     }
     .title('登录')
-    .backgroundColor($r('app.color.background'))
+    .backgroundColor($r('sys.color.background_secondary'))
   }
 }
 

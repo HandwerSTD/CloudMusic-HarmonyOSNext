@@ -25,7 +25,7 @@ export struct PlayQueueButton {
       detents: ['70%', '100%'],
       dragBar: false,
       showClose: false,
-      backgroundColor: $r('app.color.background'),
+      backgroundColor: $r('sys.color.background_secondary'),
       onDisappear: () => { this.isShow = false }
     })
   }

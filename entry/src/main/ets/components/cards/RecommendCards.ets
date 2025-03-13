@@ -179,7 +179,7 @@ export struct RecommendCards_Skeleton {
     Button() {
       Column() {
         Column()
-          .backgroundColor($r('app.color.background'))
+          .backgroundColor($r('sys.color.background_secondary'))
           .alignSelf(ItemAlign.Start)
           .width('70%')
           .borderRadius(cardRadius)
@@ -187,14 +187,14 @@ export struct RecommendCards_Skeleton {
           .padding(Constants.PADDING_EDGE_DEFAULT)
         Column({ space: 3 }) {
           Column()
-            .backgroundColor($r('app.color.background'))
+            .backgroundColor($r('sys.color.background_secondary'))
             .alignSelf(ItemAlign.Center)
             .width('80%')
             .borderRadius(cardRadius)
             .height(Constants.FONT_SIZE_BAR - 2)
             .padding(Constants.PADDING_EDGE_DEFAULT)
           Column()
-            .backgroundColor($r('app.color.background'))
+            .backgroundColor($r('sys.color.background_secondary'))
             .alignSelf(ItemAlign.Center)
             .width('80%')
             .borderRadius(cardRadius)

@@ -21,7 +21,7 @@ export struct WarrantyDialog {
           this.controller.close()
         })
     }
-    .backgroundColor($r('app.color.background'))
+    .backgroundColor($r('sys.color.background_secondary'))
     .padding({ top: Constants.PADDING_EDGE_TEXT, bottom: Constants.PADDING_EDGE_TEXT })
     .constraintSize({
       minWidth: 100,

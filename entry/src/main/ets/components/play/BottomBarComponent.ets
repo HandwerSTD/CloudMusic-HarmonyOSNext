@@ -5,6 +5,7 @@ import { PlayQueueButton } from "../buttons/play/PlayQueueButton"
 import { PlayingCover } from "../sheets/PlayingCover"
 import { StorageConstants } from "../../common/constants/StorageConstants"
 import Constants from "../../common/constants/Constants"
+import { curves } from "@kit.ArkUI"
 
 /**
  * 底部播控组件
@@ -30,8 +31,8 @@ export struct BottomBarComponent {
       if(this.playmode == 0) { Image($r('app.media.ic_public_music')).fillColor($r('app.color.reverse')).songImg() }
       else { Image(this.picUrl + '?param=512y512').songImg() }
 
-      Column({ space: 5 }) {
-        Text(this.song.name).textStyle(16).fontWeight(FontWeight.Medium)
+      Column({ space: 2 }) {
+        Text(this.song.name).textStyle(16).fontWeight(FontWeight.Medium).textOverflow({ overflow: TextOverflow.MARQUEE })
         if(!this.currentLyric || this.currentLyric === '暂无歌词') {
           Text(this.artists).textStyle(12).textOverflow({ overflow: TextOverflow.MARQUEE }).layoutWeight(1).fontColor(Color.Gray)
         }
@@ -39,7 +40,7 @@ export struct BottomBarComponent {
           Text(this.currentLyric).textStyle(12).textOverflow({ overflow: TextOverflow.MARQUEE }).layoutWeight(1).fontColor(Color.Gray)
         }
       }
-      .padding({ top: 10, bottom: 10 })
+      .padding({ top: 4, bottom: 4 })
       .layoutWeight(1)
 
       ControlButtons({ isPaused: this.isPaused, isPlaying: this.isPlaying })
@@ -48,8 +49,11 @@ export struct BottomBarComponent {
     .justifyContent(FlexAlign.SpaceBetween)
     .width('100%')
     .borderRadius(Constants.RADIUS_CARD)
-    .backgroundColor($r('app.color.main'))
+    .shadow(ShadowStyle.OUTER_DEFAULT_SM)
+    .backgroundColor($r('app.color.bottom_bar_bg'))
+    .backgroundBlurStyle(BlurStyle.BACKGROUND_REGULAR)
     .height(Constants.HEIGHT_MINI)
+    .padding(8)
     .clickEffect({ level: ClickEffectLevel.LIGHT, scale: 0.9 })
     .onClick(async () => {
       if(!this.isPlaying) {
@@ -59,7 +63,10 @@ export struct BottomBarComponent {
     })
     .bindContentCover($$this.isShow, this.Cover(), {
       modalTransition: ModalTransition.DEFAULT,
-      backgroundColor: $r('app.color.background')
+      transition: TransitionEffect.move(TransitionEdge.BOTTOM).animation({
+        curve: curves.springMotion(0.5)
+      }),
+      backgroundColor: $r('sys.color.background_secondary')
     })
   }
 
@@ -134,5 +141,5 @@ struct ControlButtons {
   .height(Constants.HEIGHT_MINI)
   .aspectRatio(1)
   .borderRadius(10)
-  .padding(5)
+  .padding(1)
 }

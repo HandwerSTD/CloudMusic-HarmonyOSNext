@@ -181,7 +181,7 @@ export struct CachedPage {
             .columnsGap(10)
             .columnsTemplate('1fr')
             .layoutDirection(GridDirection.Column)
-            .backgroundColor($r('app.color.background'))
+            .backgroundColor($r('sys.color.background_secondary'))
             .height('100%')
             .width('100%')
             .padding({ left: 10, right: 10 })
@@ -201,12 +201,12 @@ export struct CachedPage {
             .backgroundColor(Color.Transparent)
         }
       }
-      .backgroundColor($r('app.color.background'))
+      .backgroundColor($r('sys.color.background_secondary'))
       .height('100%')
     }
     .title('缓存')
     .menus(this.menus)
-    .backgroundColor($r('app.color.background'))
+    .backgroundColor($r('sys.color.background_secondary'))
   }
 
   private handelSearch() {

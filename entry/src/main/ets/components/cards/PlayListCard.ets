@@ -14,7 +14,7 @@ export struct PlayListCard {
       Row({ space:15 }) {
         Image(`${this.playList.coverImgUrl}?param=256y256`)
           .width(50)
-          .borderRadius(15)
+          .borderRadius(8)
         Column({ space: 8 }) {
           Text(this.playList.name).textStyle(16).fontWeight(FontWeight.Medium)
           Text(`歌单 · ${this.playList.trackCount} 首 · ${this.playList?.creator.nickname}`).textStyle(12)

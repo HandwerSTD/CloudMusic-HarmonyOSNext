@@ -188,11 +188,11 @@ export struct PlayListPage {
       }
       .width('100%')
       .height('100%')
-      .backgroundColor($r('app.color.background'))
+      .backgroundColor($r('sys.color.background_secondary'))
     }
     .title(this.param.playList.name)
     .menus(this.menuItem)
-    .backgroundColor($r('app.color.background'))
+    .backgroundColor($r('sys.color.background_secondary'))
   }
 
   @Builder ContentList(dataSource: LazyData<PlayListSongItem>) {

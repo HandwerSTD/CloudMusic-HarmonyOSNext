@@ -152,10 +152,10 @@ export struct DailyListPage {
       .opacity(this.pageOpacity)
       .width('100%')
       .height('100%')
-      .backgroundColor($r('app.color.background'))
+      .backgroundColor($r('sys.color.background_secondary'))
     }
     .title('每日推荐')
-    .backgroundColor($r('app.color.background'))
+    .backgroundColor($r('sys.color.background_secondary'))
   }
 
   @Builder

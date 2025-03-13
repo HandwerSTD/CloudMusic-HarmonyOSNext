@@ -27,6 +27,14 @@
     {
       "name": "app_red",
       "value": "#FF6A6A"
+    },
+    {
+      "name": "bottom_bar_bg",
+      "value": "#33000000"
+    },
+    {
+      "name": "segment_selected_bg",
+      "value": "#303030"
     }
   ]
 }

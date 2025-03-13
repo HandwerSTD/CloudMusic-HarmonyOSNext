@@ -29,7 +29,7 @@ export struct AddToPlayListButton {
       height: '80%',
       dragBar: false,
       showClose: false,
-      backgroundColor: $r('app.color.background'),
+      backgroundColor: $r('sys.color.background_secondary'),
       onDisappear: () => { this.isShowAddSheet = false }
     })
   }
