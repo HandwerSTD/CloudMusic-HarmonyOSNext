@@ -449,7 +449,7 @@ export struct PlayingCover {
         maxWidth: 500
       })
       .width('100%')
-    }
+    }.padding({bottom: 36}) // 外层高度 105%，内层抬高补偿一点
     .height('100%')
     .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
   }

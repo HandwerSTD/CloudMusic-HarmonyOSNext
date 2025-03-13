@@ -51,7 +51,7 @@ export struct BottomBarComponent {
     .borderRadius(Constants.RADIUS_CARD)
     .shadow(ShadowStyle.OUTER_DEFAULT_SM)
     .backgroundColor($r('app.color.bottom_bar_bg'))
-    .backgroundBlurStyle(BlurStyle.BACKGROUND_REGULAR)
+    .backgroundBlurStyle(BlurStyle.Thin)
     .height(Constants.HEIGHT_MINI)
     .padding(8)
     .clickEffect({ level: ClickEffectLevel.LIGHT, scale: 0.9 })
@@ -66,14 +66,14 @@ export struct BottomBarComponent {
       transition: TransitionEffect.move(TransitionEdge.BOTTOM).animation({
         curve: curves.springMotion(0.5)
       }),
-      backgroundColor: $r('sys.color.background_secondary')
+      backgroundColor: Color.Black
     })
   }
 
   @Builder
   Cover() {
     PlayingCover({ isShow: this.isShow })
-      .height('100%')
+      .height('105%')
   }
 }
 

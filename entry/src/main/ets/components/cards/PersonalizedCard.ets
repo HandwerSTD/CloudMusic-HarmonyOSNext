@@ -21,6 +21,7 @@ export struct PersonalizedCard {
         .aspectRatio(1)
         .height(80)
         .borderRadius(Constants.RADIUS_IMG)
+        .shadow(ShadowStyle.OUTER_DEFAULT_SM)
 
       Column({ space: 5 }) {
         Text(this.item.name)

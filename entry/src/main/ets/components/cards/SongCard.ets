@@ -49,17 +49,21 @@ export struct SongCard {
     Button() {
       Row() {
         Row() {
-          if(this.sid != -1) {
-            Text(`${this.sid + 1}`)
-              .width(40)
-              .fontWeight(FontWeight.Bold)
-              .textAlign(TextAlign.JUSTIFY)
-          }
+          // if(this.sid != -1) {
+          //   Row() {
+          //     Text(`${this.sid + 1}`)
+          //       .fontSize(12)
+          //       .width(30)
+          //       .fontWeight(FontWeight.Bold)
+          //       .textAlign(TextAlign.JUSTIFY)
+          //   }
+          // }
           if(this.picUrl) {
             Image(typeof this.picUrl === 'string' ? this.picUrl + '?param=100y100' : this.picUrl)
               .width(50)
-              .padding({ right: 10 })
+              .margin({ right: 10 })
               .borderRadius(5)
+              .shadow(ShadowStyle.OUTER_DEFAULT_SM)
               .draggable(false)
           }
           Column({ space: 5 }) {
@@ -111,6 +115,7 @@ export struct SongCard {
             this.addToQueue()
           })
         }
+
       }
       .height(60)
     }
@@ -119,7 +124,7 @@ export struct SongCard {
     .type(ButtonType.Normal)
     .width('100%')
     .height(60)
-    .padding({ left: 20, right: 20 })
+    .padding({ left: 24, right: 24 })
     // Card 点击
     .onClick(async () => {
       if(this.song.id == this.playSong.id) {

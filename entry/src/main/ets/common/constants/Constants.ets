@@ -17,7 +17,7 @@ export default class Constants {
   /**
    * 文字按钮高度
    */
-  static readonly HEIGHT_TEXT_BUTTON: number = 40
+  static readonly HEIGHT_TEXT_BUTTON: number = 50
   /**
    * MenuItem 默认尺寸
    */
@@ -65,7 +65,7 @@ export default class Constants {
   /**
    * Image 默认弧度
    */
-  static readonly RADIUS_IMG: number = 5
+  static readonly RADIUS_IMG: number = 10
   /**
    * 标题栏字体尺寸
    */
@@ -81,7 +81,7 @@ export default class Constants {
   /**
    * 默认边缘避让尺寸
    */
-  static readonly PADDING_EDGE_DEFAULT: number = 10
+  static readonly PADDING_EDGE_DEFAULT: number = 12
   /**
    * 文字类边缘避让尺寸
    */

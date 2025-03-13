@@ -88,15 +88,16 @@ export struct PlayListPage {
             ListItem() {
               Row() {
                 Button() {
-                  Row({ space: 5 }) {
+                  Row({ space: 12 }) {
                     if (this.isPlayerLoading) {
                       LoadingProgress().height(35).padding({ left: 30 })
                     } else {
-                      Image($r('app.media.ic_play_fill')).width(Constants.FONT_SIZE_COMMON).fillColor(Color.Gray)
-                      Text(`播放全部 (${this.trackCount})`).fontSize(Constants.FONT_SIZE_COMMON)
+                      SymbolGlyph($r('sys.symbol.play_round_triangle_fill')).fontSize(36).fontColor([$r('sys.color.brand')])
+                      Text(`播放全部 (${this.trackCount})`).fontSize(18).fontWeight(FontWeight.Bold)
                     }
                   }
                   .height(Constants.HEIGHT_TEXT_BUTTON)
+                  .margin({left: 12, right: 12})
                 }
                 .type(ButtonType.Normal)
                 .backgroundColor(Color.Transparent)
@@ -132,7 +133,7 @@ export struct PlayListPage {
                 }
               })
             } else {
-              ListItemGroup({ header: this.ToolBar() }) {
+              ListItemGroup({ header: this.ToolBar(), space: 12 }) {
                 if(this.searchKeyword) {
                   this.ContentList(this.filteredDataSource)
                 } else {
@@ -233,6 +234,7 @@ export struct PlayListPage {
         icon: '/resources/base/media/ic_public_search_filled.svg'
       })
         .backgroundBlurStyle(BlurStyle.Thin)
+        .shadow(ShadowStyle.OUTER_DEFAULT_XS)
         .height(Constants.HEIGHT_SELECT)
         .layoutWeight(1)
         .searchButton('搜索')
@@ -272,7 +274,7 @@ export struct PlayListPage {
 
   @Builder PlayListInfo() {
     Column() {
-      Row({ space: 15 }) {
+      Row({ space: 25 }) {
         Column() {
           Stack() {
             Image('')
@@ -282,12 +284,13 @@ export struct PlayListPage {
             Image(`${this.param.playList.coverImgUrl}?param=256y256`)
               .width('100%')
               .borderRadius(10)
+              .shadow(ShadowStyle.OUTER_DEFAULT_MD)
           }
           .height('100%')
           .width('100%')
         }
-        .height(80)
-        .width(80)
+        .height(100)
+        .width(100)
 
         Column() {
           Text(this.param.playList.name)
@@ -310,7 +313,7 @@ export struct PlayListPage {
 
         if(this.param.isShowHeart) {
           if (this.isSubscribed) {
-            Image($r('app.media.ic_heart_filled')).fillColor(Color.Pink).width(25)
+            Image($r('app.media.ic_heart_filled')).fillColor($r('app.color.heart_red')).width(25)
               .onClick(async () => {
                 this.UnSubScribe()
               })
@@ -325,7 +328,7 @@ export struct PlayListPage {
               })
           }
         }
-      }
+      }.margin({top: 12})
       .width('90%')
       .justifyContent(FlexAlign.SpaceAround)
     }

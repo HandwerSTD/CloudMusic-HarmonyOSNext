@@ -127,7 +127,7 @@ struct Index {
     .hideBackButton(true)
     .backgroundColor($r('sys.color.background_secondary'))
     .navDestination(this.PageMap)
-    .toolbarConfiguration(this.ToolBar(), { backgroundBlurStyle: BlurStyle.Regular, barStyle: BarStyle.STACK, backgroundColor: Color.Transparent })
+    .toolbarConfiguration(this.ToolBar(), { backgroundBlurStyle: BlurStyle.Regular, barStyle: BarStyle.STACK, backgroundColor: $r('sys.color.comp_background_secondary') })
   }
 
   @Builder PageMap(name: string, param: Object) {

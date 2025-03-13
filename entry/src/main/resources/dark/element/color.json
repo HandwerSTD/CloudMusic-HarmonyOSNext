@@ -35,6 +35,10 @@
     {
       "name": "segment_selected_bg",
       "value": "#303030"
+    },
+    {
+      "name": "heart_red",
+      "value": "#FF2442"
     }
   ]
 }
