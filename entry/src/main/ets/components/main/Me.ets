@@ -4,6 +4,7 @@ import Constants from "../../common/constants/Constants"
 import { StorageConstants } from "../../common/constants/StorageConstants"
 import { User, UserClass } from "../../common/entities/User"
 import { initUserInfo } from "../../common/functions/app/appInit"
+import { gAppTheme } from "../../common/utils/theme/ThemeUtils"
 import { CircleImageButton } from "../buttons/CircleButton"
 
 @Component
@@ -89,7 +90,7 @@ export struct Me {
 
       if(this.isValidAPI && !this.appLoading) {
         if(this.isLogged) {
-          this.LoginButton($r('app.color.app_red'), '退出登录', () => {
+          this.LoginButton(gAppTheme.colors?.brand, '退出登录', () => {
             this.LogOut()
           })
         } else {
@@ -123,7 +124,7 @@ export struct Me {
     .onClick(action)
   }
 
-  @Builder LoginButton(color: Color | string | ResourceStr, text: string, action: () => void) {
+  @Builder LoginButton(color: Color | string | ResourceStr | undefined, text: string, action: () => void) {
     Button() {
       Row({ space: 10 }) {
         Text(text)

@@ -2,6 +2,7 @@ import { ToastUtil } from "@pura/harmony-utils"
 import Constants from "../../common/constants/Constants"
 import { StorageConstants } from "../../common/constants/StorageConstants"
 import PreferencesUtils from "../../common/utils/data/PreferencesUtils"
+import { gAppTheme } from "../../common/utils/theme/ThemeUtils"
 import { ExplainButton } from "../buttons/ExplainButton"
 
 /**
@@ -43,7 +44,7 @@ export struct SongClickActionSheet {
     Row({ space: 10 }) {
       Radio({ value: `${index}` , group: 'clickAction' })
         .checked(this.songClickAction == index)
-        .radioStyle({ checkedBackgroundColor: $r('app.color.app_red') })
+        .radioStyle({ checkedBackgroundColor: gAppTheme.colors?.brand })
         .onChange((isChecked) => {
           if(isChecked) {
             this.songClickAction = index

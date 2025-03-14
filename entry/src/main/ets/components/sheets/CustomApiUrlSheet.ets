@@ -6,6 +6,7 @@ import { openInWeb } from "../../common/functions/common/open"
 import PreferencesUtils from "../../common/utils/data/PreferencesUtils"
 import { ExplainButton } from "../buttons/ExplainButton"
 import { promptAction } from "@kit.ArkUI"
+import { gAppTheme } from "../../common/utils/theme/ThemeUtils"
 
 /**
  * 自定义API服务器地址
@@ -96,7 +97,7 @@ export struct SetApiSheet {
             .onChange((text) => this.customApiUrl = text)
             .borderRadius(Constants.RADIUS_IMG)
           Button('设置')
-            .backgroundColor($r('app.color.app_red'))
+            .backgroundColor(gAppTheme.colors?.brand)
             .layoutWeight(1)
             .onClick(() => {
               this.setCustomApiUrl()
@@ -136,7 +137,7 @@ export struct SetApiSheet {
         Toggle({ type: ToggleType.Switch, isOn: this.isCustomCookie })
           .height(24)
           .width(48)
-          .selectedColor($r('app.color.app_red'))
+          .selectedColor(gAppTheme.colors?.brand)
           .onChange((isOn) => {
             animateTo({ duration: 100, curve: Curve.EaseInOut }, () => {
               this.toggleCustomCookie(isOn)
@@ -156,7 +157,7 @@ export struct SetApiSheet {
             .height(150)
             .textAlign(TextAlign.Start)
           Button('设置')
-            .backgroundColor($r('app.color.app_red'))
+            .backgroundColor(gAppTheme.colors?.brand)
             .width(100)
             .onClick(() => {
               this.setCustomCookie()

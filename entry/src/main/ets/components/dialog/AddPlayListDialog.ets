@@ -36,7 +36,7 @@ export struct AddPlayListDialog {
           })
 
         Button('创 建')
-          .backgroundColor($r('app.color.app_red'))
+          .backgroundColor(gAppTheme.colors?.brand)
           .onClick(() => {
             this.handleCreate()
           })

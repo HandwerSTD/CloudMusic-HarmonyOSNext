@@ -4,6 +4,7 @@ import { StorageConstants } from "../../common/constants/StorageConstants"
 import { checkValidUrl } from "../../common/functions/common/get"
 import { openInWeb } from "../../common/functions/common/open"
 import PreferencesUtils from "../../common/utils/data/PreferencesUtils"
+import { gAppTheme } from "../../common/utils/theme/ThemeUtils"
 
 @CustomDialog
 export struct ApiDialog {
@@ -54,7 +55,7 @@ export struct ApiDialog {
           .onChange((text) => this.customApiUrl = text)
           .borderRadius(Constants.RADIUS_IMG)
         Button('设置')
-          .backgroundColor($r('app.color.app_red'))
+          .backgroundColor(gAppTheme.colors?.brand)
           .layoutWeight(1)
           .onClick(() => {
             this.setCustomApiUrl()

@@ -15,6 +15,7 @@ import { PlayListSongItem } from '../common/entities/PlayListSongs'
 import { User, UserClass } from '../common/entities/User'
 import { promptAction, TextModifier } from '@kit.ArkUI'
 import { LazyData } from '@pie/lazy-data'
+import { gAppTheme } from '../common/utils/theme/ThemeUtils'
 
 /**
  * 歌单二级页面
@@ -92,7 +93,7 @@ export struct PlayListPage {
                     if (this.isPlayerLoading) {
                       LoadingProgress().height(35).padding({ left: 30 })
                     } else {
-                      SymbolGlyph($r('sys.symbol.play_round_triangle_fill')).fontSize(36).fontColor([$r('sys.color.brand')])
+                      SymbolGlyph($r('sys.symbol.play_round_triangle_fill')).fontSize(36).fontColor([gAppTheme.colors?.brand])
                       Text(`播放全部 (${this.trackCount})`).fontSize(18).fontWeight(FontWeight.Bold)
                     }
                   }
@@ -116,7 +117,7 @@ export struct PlayListPage {
                   Image($r('app.media.ic_public_delete'))
                     .width(20)
                     .clickEffect({ level: ClickEffectLevel.LIGHT, scale: 0.9 })
-                    .fillColor($r('app.color.app_red'))
+                    .fillColor(gAppTheme.colors?.brand)
                     .onClick(() => {
                       this.deleteButtonAction()
                     })

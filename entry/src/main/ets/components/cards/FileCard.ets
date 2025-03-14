@@ -6,6 +6,7 @@ import { fetchMetadata, fetchSongInfo } from "../../common/functions/common/conv
 import { playMusicWithFile } from "../../common/functions/play/playControl"
 import FileUtils from "../../common/utils/file/FileUtils"
 import PlayQueueUtils from "../../common/utils/play/PlayQueueUtils"
+import { gAppTheme } from "../../common/utils/theme/ThemeUtils"
 
 /**
  * 文件卡片组件
@@ -72,7 +73,7 @@ export struct FileCard {
           FileUtils.previewFile(this.fileName)
         })
 
-      MenuItem(this.MenuItem($r('app.media.ic_public_delete_filled'), '删除歌曲', $r('app.color.app_red')))
+      MenuItem(this.MenuItem($r('app.media.ic_public_delete_filled'), '删除歌曲', gAppTheme.colors?.brand))
         .onClick(async () => {
           DialogUtil.showPrimaryDialog({
             title: '删除文件',
