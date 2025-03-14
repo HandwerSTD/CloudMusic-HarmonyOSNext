@@ -13,7 +13,7 @@ import { PlayListCard_Skeleton } from '../components/cards/PlayListCard'
 import { StorageConstants } from '../common/constants/StorageConstants'
 import { PlayListSongItem } from '../common/entities/PlayListSongs'
 import { User, UserClass } from '../common/entities/User'
-import { promptAction } from '@kit.ArkUI'
+import { promptAction, TextModifier } from '@kit.ArkUI'
 import { LazyData } from '@pie/lazy-data'
 
 /**
@@ -127,6 +127,7 @@ export struct PlayListPage {
             }
             .padding({ left: 20, right: 20 })
             if (this.isLoading) {
+              ListItem().height(24)
               ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], () => {
                 ListItem() {
                   PlayListCard_Skeleton()
@@ -191,7 +192,9 @@ export struct PlayListPage {
       .height('100%')
       .backgroundColor($r('sys.color.background_secondary'))
     }
-    .title(this.param.playList.name)
+    // .title(this.param.playList.name, {
+    //   mainTitleModifier: (new TextModifier()).maxLines(1).margin({right: 24})
+    // })
     .menus(this.menuItem)
     .backgroundColor($r('sys.color.background_secondary'))
   }
@@ -231,7 +234,6 @@ export struct PlayListPage {
     Row({ space: 5 }) {
       Search({
         placeholder: '搜索歌名或歌手',
-        icon: '/resources/base/media/ic_public_search_filled.svg'
       })
         .backgroundBlurStyle(BlurStyle.Thin)
         .shadow(ShadowStyle.OUTER_DEFAULT_XS)
@@ -295,17 +297,18 @@ export struct PlayListPage {
         Column() {
           Text(this.param.playList.name)
             .fontSize(18)
-            .fontWeight(FontWeight.Medium)
+            .fontWeight(FontWeight.Bold)
             .width('100%')
             .padding({ bottom: 5 })
           Text(`来自 ${this.param.playList.creator.nickname}`)
             .fontSize(12)
             .width('100%')
             .textAlign(TextAlign.Start)
-          Text(`${this.param.playList.trackCount}首歌曲     ${formatNumber(this.param.playList.playCount)}次播放`)
-            .fontSize(12)
-            .width('100%')
-            .textAlign(TextAlign.Start)
+            .fontColor($r('sys.color.ohos_id_color_text_secondary'))
+          // Text(`${this.param.playList.trackCount}首歌曲     ${formatNumber(this.param.playList.playCount)}次播放`)
+          //   .fontSize(12)
+          //   .width('100%')
+          //   .textAlign(TextAlign.Start)
         }
         .height(80)
         .layoutWeight(1)

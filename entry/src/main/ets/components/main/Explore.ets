@@ -126,7 +126,7 @@ export struct Explore {
             }
 
             GridItem() {
-              Column({ space: 5 }) {
+              Column({ space: 12 }) {
                 this.Intro('推荐歌单', () => {})
                 // 推荐歌单
                 if (this.isLoadingPersonalized) {
@@ -145,6 +145,8 @@ export struct Explore {
                     ListItem().width(5)
                     ListItem().width(5)
                   }
+                  .backgroundColor($r('sys.color.ohos_id_color_list_card_bg'))
+                  .borderRadius(24)
                   .lanes(2)
                   .listDirection(Axis.Horizontal)
                   .scrollBar(BarState.Off)
@@ -152,13 +154,16 @@ export struct Explore {
                 }
               }
             }
-            .padding({ top: 20 })
+            .padding({ top: 20, left: 12, right: 12 })
 
             GridItem() {
               Column({ space: 15 }) {
-                this.Intro('排行榜', () => {
-                  this.pageInfos.pushPathByName('TopListPage', null)
-                })
+                Row() {
+
+                  this.Intro('排行榜', () => {
+                    this.pageInfos.pushPathByName('TopListPage', null)
+                  })
+                }.padding({left: 12})
                 // 排行榜
                 if (this.isLoading) {
                   GridItem() {
@@ -281,5 +286,5 @@ export struct Explore {
   .fontSize(size)
   .fontWeight(FontWeight.Bold)
   .fontColor($r('app.color.reverse'))
-  .padding({ left: 20 })
+  .padding({ left: 16 })
 }

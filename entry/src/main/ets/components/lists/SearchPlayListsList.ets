@@ -45,7 +45,7 @@ export struct SearchPlayListsList {
       .width('100%')
       .justifyContent(FlexAlign.Center)
     } else {
-      List() {
+      List({ space: 12 }) {
         ForEach(this.playLists, (item: PlayList, index) => {
           ListItem() {
             PlayListCard({ playList: item })

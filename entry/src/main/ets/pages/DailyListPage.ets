@@ -1,6 +1,6 @@
 import { Song } from '../common/entities/SongsResult'
 import { SongCard } from '../components/cards/SongCard'
-import { LogUtil } from '@pura/harmony-utils'
+import { DateUtil, LogUtil } from '@pura/harmony-utils'
 import { DailySongRes, PlayDailySongs } from '../api/playListApi'
 import { BottomBarComponent } from '../components/play/BottomBarComponent'
 import { playQueue } from '../common/functions/play/playControl'
@@ -18,6 +18,7 @@ const TAG = '[DailyListPage] '
 
 @Component
 export struct DailyListPage {
+  @StorageProp(StorageConstants.IS_PLAYER_LOADING) isPlayerLoading: boolean = false
   @StorageProp('bottomRectHeight') bottomRectHeight: number = 0
   @StorageProp('topRectHeight') topRectHeight: number = 0
   @StorageProp(StorageConstants.BREAKPOINT) breakpoint: string = 'sm'
@@ -26,7 +27,7 @@ export struct DailyListPage {
   @State isLoading: boolean = true
   @State loadingPlayList:boolean = false
   @State pageOpacity: number = 1
-  @State totayDate: string = ''
+  @State todayDate: string = ''
 
   async aboutToAppear() {
     if(!this.hasLoaded) {
@@ -34,7 +35,7 @@ export struct DailyListPage {
       this.hasLoaded = true
     }
     let date = new Date()
-    this.totayDate = `${date.toDateString()}`
+    this.todayDate = `${date.toDateString()}`
   }
 
   async loadSongs(): Promise<void> {
@@ -74,11 +75,16 @@ export struct DailyListPage {
                 }
                 ListItem() {
                   Button() {
-                    Row({ space: 5 }) {
-                      Image($r('app.media.ic_play_fill')).width(Constants.FONT_SIZE_COMMON).fillColor(Color.Gray)
-                      Text('播放全部').fontSize(Constants.FONT_SIZE_COMMON)
+                    Row({ space: 12 }) {
+                      if (this.isPlayerLoading) {
+                        LoadingProgress().height(35).padding({ left: 30 })
+                      } else {
+                        SymbolGlyph($r('sys.symbol.play_round_triangle_fill')).fontSize(36).fontColor([$r('sys.color.brand')])
+                        Text(`播放全部 (${this.list.length})`).fontSize(18).fontWeight(FontWeight.Bold)
+                      }
                     }
                     .height(Constants.HEIGHT_TEXT_BUTTON)
+                    .margin({left: 12, right: 12})
                   }
                   .type(ButtonType.Normal)
                   .backgroundColor(Color.Transparent)
@@ -92,25 +98,27 @@ export struct DailyListPage {
                 }
                 .padding({ left: 20, bottom: 10 })
 
-                ForEach(this.list, (item: DailySongRes, index) => {
-                  ListItem() {
-                    SongCard({
-                      song: item.song,
-                      sid: index,
-                      isPlayList: false,
-                      index: index,
-                      reason: item.reason,
-                      picUrl: item.picUrl ?? $r('app.media.ic_public_music')
+                ListItemGroup({space: 12}) {
+                  ForEach(this.list, (item: DailySongRes, index) => {
+                    ListItem() {
+                      SongCard({
+                        song: item.song,
+                        sid: index,
+                        isPlayList: false,
+                        index: index,
+                        reason: item.reason,
+                        picUrl: item.picUrl ?? $r('app.media.ic_public_music')
+                      })
+                    }
+                    .swipeAction({ end: this.SwipeItem(item.song) })
+                    .translate({ y: -40 })
+                    .animation({
+                      duration: 600,
+                      curve: Curve.LinearOutSlowIn
                     })
-                  }
-                  .swipeAction({ end: this.SwipeItem(item.song) })
-                  .translate({ y: -40 })
-                  .animation({
-                    duration: 600,
-                    curve: Curve.LinearOutSlowIn
+                    .translate({ y: 0 })
                   })
-                  .translate({ y: 0 })
-                })
+                }
 
                 ListItem().height(px2vp(this.bottomRectHeight) + Constants.HEIGHT_MINI)
               }
@@ -161,16 +169,40 @@ export struct DailyListPage {
   @Builder
   Info() {
     Column() {
-      Text(this.totayDate)
-        .fontWeight(FontWeight.Bold)
-        .fontSize(18)
-        .width('100%')
-      Text('根据你的音乐口味生成，每天6:00更新')
-        .fontSize(12)
-        .width('100%')
+      if (this.list.length > 3) {
+        this.StackedAlbum()
+      } else {
+        Image($r('app.media.bg_daily'))
+          .height(66).aspectRatio(1)
+          .shadow(ShadowStyle.OUTER_DEFAULT_SM)
+      }
+      Text() {
+        Span(`${DateUtil.getNowMonth()} 月 ${DateUtil.getNowDay()} 日`).fontWeight(FontWeight.Bold).fontSize(24)
+        Span(' | ').fontWeight(FontWeight.Medium) .fontSize(24)
+        Span('为你推荐').fontSize(18).fontColor($r('sys.color.font_secondary'))
+      }
     }
     .width('100%')
     .padding({ left: 20, right: 20, bottom: 20 })
+  }
+
+  @Builder StackedAlbum() {
+    Stack({alignContent: Alignment.Center}) {
+      Image(this.list[2].picUrl+"?param=512x512")
+        .width(240 - 48).aspectRatio(1)
+        .shadow(ShadowStyle.OUTER_DEFAULT_LG)
+        .margin({left: 72+24})
+        .borderRadius(12)
+      Image(this.list[1].picUrl+"?param=512x512")
+        .height(240 - 24).aspectRatio(1)
+        .shadow(ShadowStyle.OUTER_DEFAULT_MD)
+        .margin({left: 48})
+        .borderRadius(12)
+      Image(this.list[0].picUrl+"?param=512x512")
+        .height(240).aspectRatio(1)
+        .shadow(ShadowStyle.OUTER_DEFAULT_LG)
+        .borderRadius(12)
+    }.margin(24).width('100%')
   }
 
   @Builder SwipeItem(song: Song) {

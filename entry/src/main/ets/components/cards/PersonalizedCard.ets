@@ -21,7 +21,7 @@ export struct PersonalizedCard {
         .aspectRatio(1)
         .height(80)
         .borderRadius(Constants.RADIUS_IMG)
-        .shadow(ShadowStyle.OUTER_DEFAULT_SM)
+        .shadow(ShadowStyle.OUTER_DEFAULT_MD)
 
       Column({ space: 5 }) {
         Text(this.item.name)
@@ -30,7 +30,7 @@ export struct PersonalizedCard {
           .fontSize(16)
           .width('100%')
           .textAlign(TextAlign.Start)
-          .lineHeight(22)
+          .lineHeight(20)
           .maxLines(3)
           .textOverflow({ overflow: TextOverflow.Ellipsis })
         if(this.item.copywriter) {

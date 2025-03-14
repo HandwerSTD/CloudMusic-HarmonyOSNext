@@ -77,7 +77,7 @@ export struct CloudPage {
               LoadingProgress().width(Constants.SIZE_LOADING_PROGRESS_DEFAULT)
             }.height('100%').width('100%').justifyContent(FlexAlign.Center)
           } else {
-            List() {
+            List({space: 12}) {
               ForEach(this.list, (item: PlayListSongItem, index) => {
                 ListItem() {
                   SongCard({
