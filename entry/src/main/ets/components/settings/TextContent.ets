@@ -117,7 +117,8 @@ export struct Settings_Bottom {
   build() {
     Column() {
       Text('云音汇 CloudMusic\n' +
-        'For HarmonyOS NEXT').BottomText()
+        'For HarmonyOS NEXT\n' +
+      '原作者 Chenlvin | 深度定制 By Handwer').BottomText()
     }
     .width('100%')
   }

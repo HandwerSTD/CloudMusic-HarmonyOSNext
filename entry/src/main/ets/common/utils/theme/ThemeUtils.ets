@@ -1,4 +1,6 @@
 import { CustomColors, CustomTheme, ThemeControl } from '@kit.ArkUI'
+import { StorageConstants } from '../../constants/StorageConstants'
+import PreferencesUtils from '../data/PreferencesUtils';
 
 export class AppColors implements CustomColors {
 }
@@ -11,10 +13,21 @@ export class AppTheme implements CustomTheme {
 }
 
 export let gAppTheme: CustomTheme = new AppTheme({
-  brand: '#FF6A6A'
+  brand: $r('app.color.app_red')
 })
 
-export const themeColors = ['#ff0a59f7', '#ff6a6a']
+export const themeColors = [$r('app.color.app_red'),
+   $r('app.color.CosmicBlue') ,
+   $r('app.color.NavyBlue') ,
+   $r('app.color.SkyBlue') ,
+   $r('app.color.CyanGreen') ,
+   $r('app.color.GrassGreen') ,
+   $r('app.color.LilacPurple') ,
+   $r('app.color.StrawberryPink') ,
+   $r('app.color.CrimsonRed') ,
+   $r('app.color.Orange') ]
+
+PersistentStorage.persistProp(StorageConstants.SELECTED_THEME, 0)
 
 @ObservedV2
 export class ThemeManager {
@@ -40,5 +53,6 @@ export class ThemeManager {
     })
     ThemeControl.setDefaultTheme(st.appTheme)
     st.nowUsedThemeIndex = index
+    PreferencesUtils.putPreferenceValue(StorageConstants.USER_PREF, StorageConstants.SELECTED_THEME, index)
   }
 }

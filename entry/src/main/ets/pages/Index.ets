@@ -21,10 +21,7 @@ import { ApiDialog } from '../components/dialog/ApiDialog';
 import PreferencesUtils from '../common/utils/data/PreferencesUtils';
 import { DebugPage } from './DebugPage';
 import BreakpointUtils from '../common/utils/system/BreakpointUtils';
-import { ThemeControl } from '@kit.ArkUI';
 import { ThemeManager } from '../common/utils/theme/ThemeUtils';
-
-ThemeControl.setDefaultTheme(ThemeManager.getTheme())
 
 @Entry
 @Component

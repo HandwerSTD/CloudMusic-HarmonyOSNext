@@ -5,6 +5,7 @@ import PreferencesUtils from '../common/utils/data/PreferencesUtils';
 import { LogUtil } from '@pura/harmony-utils';
 import { appInit } from '../common/functions/app/appInit';
 import { StorageConstants } from '../common/constants/StorageConstants';
+import { ThemeManager } from '../common/utils/theme/ThemeUtils';
 
 
 export default class EntryAbility extends UIAbility {
@@ -33,6 +34,8 @@ export default class EntryAbility extends UIAbility {
         return
       }
       let windowClass: window.Window = windowStage.getMainWindowSync() // 获取应用主窗口
+      let lastPrefTheme = await PreferencesUtils.getPreferenceValue(StorageConstants.USER_PREF, StorageConstants.SELECTED_THEME, 0)
+      ThemeManager.setTheme(lastPrefTheme)
       // 设置窗口全屏
       // let isLayoutFullScreen = true;
       // windowClass.setWindowLayoutFullScreen(isLayoutFullScreen).then(() => {

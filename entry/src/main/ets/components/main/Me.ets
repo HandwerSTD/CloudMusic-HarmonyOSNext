@@ -90,11 +90,11 @@ export struct Me {
       Column() {
         List() {
           ForEach(themeColors, (col: string, index) => {
-            this.ItemCard($r('app.media.ic_public_random'), '切换主题 ' + col, () => {
+            this.ItemCard($r('app.media.ic_public_random'), '切换主题 ' + index.toString(), () => {
               ThemeManager.setTheme(index)
             })
           })
-        }
+        }.height(200)
       }
       .itemColumnStyle()
 
@@ -102,11 +102,11 @@ export struct Me {
 
       if(this.isValidAPI && !this.appLoading) {
         if(this.isLogged) {
-          this.LoginButton(ThemeManager.getTheme().colors?.brand, '退出登录', () => {
+          this.LoginButton('退出登录', () => {
             this.LogOut()
           })
         } else {
-          this.LoginButton(Color.Blue, '登 录', () => {
+          this.LoginButton('登录', () => {
             this.pageInfos.pushPathByName('LoginPage', null, true)
           })
         }
@@ -136,7 +136,7 @@ export struct Me {
     .onClick(action)
   }
 
-  @Builder LoginButton(color: Color | string | ResourceStr | undefined, text: string, action: () => void) {
+  @Builder LoginButton( text: string, action: () => void) {
     Button() {
       Row({ space: 10 }) {
         Text(text)
@@ -145,7 +145,7 @@ export struct Me {
           .fontColor(Color.White)
       }
     }
-    .backgroundColor(color)
+    .backgroundColor(ThemeManager.getTheme().colors?.brand)
     .width('100%')
     .padding(Constants.PADDING_EDGE_DEFAULT)
     .onClick(action)

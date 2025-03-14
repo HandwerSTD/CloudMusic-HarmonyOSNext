@@ -14,6 +14,7 @@ import { PasteboardUtil, ToastUtil } from "@pura/harmony-utils"
 import { PlayerActionSheet } from "./PlayerActionSheet"
 import { likeThisSong } from "../../common/functions/play/songLike"
 import { curves } from "@kit.ArkUI"
+import { AppColors } from "../../common/utils/theme/ThemeUtils"
 
 @Component
 export struct PlayingCover {
@@ -83,10 +84,13 @@ export struct PlayingCover {
      /**
       * 主内容
       */
-     if(this.breakpoint == 'sm') {
-       this.PhoneUI()
-     } else {
-       this.LargeUI()
+     WithTheme({}) {
+
+       if(this.breakpoint == 'sm') {
+         this.PhoneUI()
+       } else {
+         this.LargeUI()
+       }
      }
 
      /**
@@ -244,10 +248,11 @@ export struct PlayingCover {
         .showSteps(false)
         .showTips(false)
         .opacity(this.tabPageIndex == 0 ? 0.7 : 0.1)
-        .animation({
-          duration: 600,
-          curve: Curve.LinearOutSlowIn,
-        })
+          // 加入 Theme 之后 Slider 带属性动画刷新会和 Theme 抢颜色，很奇怪
+        // .animation({
+        //   duration: 600,
+        //   curve: Curve.LinearOutSlowIn,
+        // })
         .onChange((value: number, mode: SliderChangeMode) => {
           if (mode == SliderChangeMode.Begin) {
             this.isMovingSlider = true

@@ -212,4 +212,9 @@ export class StorageConstants {
    * @description AppStorage & Preference
    */
   static readonly PERSONALIZED_LIST: string = 'personalizedList'
+
+  /**
+   * 保存选择的主题
+   */
+  static readonly SELECTED_THEME: string = 'selectedTheme'
 }

@@ -39,6 +39,41 @@
     {
       "name": "heart_red",
       "value": "#FF2442"
+    },{
+      "name": "CosmicBlue",
+      "value": "#317AF7"
+    },
+    {
+      "name": "NavyBlue",
+      "value": "#2970C2"
+    },
+    {
+      "name": "SkyBlue",
+      "value": "#4796C4"
+    },
+    {
+      "name": "CyanGreen",
+      "value": "#348991"
+    },
+    {
+      "name": "GrassGreen",
+      "value": "#5BA854"
+    },
+    {
+      "name": "LilacPurple",
+      "value": "#8C55C2"
+    },
+    {
+      "name": "StrawberryPink",
+      "value": "#D64966"
+    },
+    {
+      "name": "CrimsonRed",
+      "value": "#D94838"
+    },
+    {
+      "name": "Orange",
+      "value": "#E08C3A"
     }
   ]
 }
