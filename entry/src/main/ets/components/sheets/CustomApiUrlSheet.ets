@@ -1,10 +1,11 @@
-import { DialogUtil, ToastUtil } from "@pura/harmony-utils"
+import { DialogUtil, PasteboardUtil, ToastUtil } from "@pura/harmony-utils"
 import Constants from "../../common/constants/Constants"
 import { StorageConstants } from "../../common/constants/StorageConstants"
 import { checkValidUrl } from "../../common/functions/common/get"
 import { openInWeb } from "../../common/functions/common/open"
 import PreferencesUtils from "../../common/utils/data/PreferencesUtils"
 import { ExplainButton } from "../buttons/ExplainButton"
+import { promptAction } from "@kit.ArkUI"
 
 /**
  * 自定义API服务器地址
@@ -14,6 +15,7 @@ import { ExplainButton } from "../buttons/ExplainButton"
 export struct SetApiSheet {
   @StorageLink(StorageConstants.IS_CUSTOM_COOKIE) isCustomCookie: boolean = false
   @StorageProp(StorageConstants.CUSTOM_COOKIE) customCookie: string = ''
+  @StorageProp(StorageConstants.COOKIE) logonCookie: string = ''
   @StorageProp(StorageConstants.API_URL) customApiUrl: string = ''
   @StorageProp(StorageConstants.VALID_API_URL) validApiUrl: boolean = false
   @StorageProp(StorageConstants.BREAKPOINT) breakpoint: string = 'sm'
@@ -110,6 +112,18 @@ export struct SetApiSheet {
 
   @Builder SetCookie() {
     Column({ space: 10 }) {
+
+      if (this.logonCookie !== '') {
+        Button('提取已登录 Cookie')
+          .width('100%')
+          .onClick(() => {
+            PasteboardUtil.setDataText(this.logonCookie)
+            promptAction.showToast({
+              message: '已复制到剪贴板'
+            })
+          })
+      }
+
       Row() {
         Row({ space: 5 }) {
           Text('手动设置Cookie').LeftText()
