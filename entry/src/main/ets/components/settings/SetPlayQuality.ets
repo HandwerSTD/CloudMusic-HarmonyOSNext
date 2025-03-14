@@ -3,7 +3,7 @@ import { PlayConstants } from "../../common/constants/PlayConstants"
 import { StorageConstants } from "../../common/constants/StorageConstants"
 import { QualityType } from "../../common/entities/SongDownload"
 import PreferencesUtils from "../../common/utils/data/PreferencesUtils"
-import { gAppTheme } from "../../common/utils/theme/ThemeUtils"
+import { ThemeManager } from "../../common/utils/theme/ThemeUtils"
 
 /**
  * 设置播放音质
@@ -20,7 +20,7 @@ export struct SetPlayQuality {
     Row() {
       Text('在线播放音质').LeftText()
       Select([{ value: '标准' }, { value: '高' }, { value: '极高' }, { value: '无损' }])
-        .selectedOptionFontColor(gAppTheme.colors?.brand)
+        .selectedOptionFontColor(ThemeManager.getTheme().colors?.brand)
         .selected(this.selected)
         .value(this.selected ? PlayConstants.QUALITY_NAME[this.selected] : '标准')
         .width(100)

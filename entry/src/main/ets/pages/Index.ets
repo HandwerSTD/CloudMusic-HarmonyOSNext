@@ -14,7 +14,6 @@ import { WebLogin } from './login/WebLogin';
 import { WebPage } from './WebPage';
 import { UserPlayLists } from '../components/main/UserPlayLists';
 import { Me } from '../components/main/Me';
-import { resourceManager } from '@kit.LocalizationKit';
 import { StorageConstants } from '../common/constants/StorageConstants';
 import { WarrantyDialog } from '../components/dialog/WarrantyDialog';
 import { TopListPage } from './TopListPage';
@@ -23,9 +22,9 @@ import PreferencesUtils from '../common/utils/data/PreferencesUtils';
 import { DebugPage } from './DebugPage';
 import BreakpointUtils from '../common/utils/system/BreakpointUtils';
 import { ThemeControl } from '@kit.ArkUI';
-import { gAppTheme } from '../common/utils/theme/ThemeUtils';
+import { ThemeManager } from '../common/utils/theme/ThemeUtils';
 
-ThemeControl.setDefaultTheme(gAppTheme)
+ThemeControl.setDefaultTheme(ThemeManager.getTheme())
 
 @Entry
 @Component
@@ -188,10 +187,10 @@ struct Index {
     Column({ space: 3 }) {
       Image(this.index == index ? activeIcon : icon)
         .width(Constants.SIZE_ICON_BUTTON_BAR)
-        .fillColor(this.index == index ? gAppTheme.colors?.brand : Color.Gray)
+        .fillColor(this.index == index ? ThemeManager.getTheme().colors?.brand : Color.Gray)
       Text(text)
         .fontSize(Constants.FONT_SIZE_BAR)
-        .fontColor(this.index == index ? gAppTheme.colors?.brand : Color.Gray)
+        .fontColor(this.index == index ? ThemeManager.getTheme().colors?.brand : Color.Gray)
     }
     .layoutWeight(1)
     .onClick(() => {

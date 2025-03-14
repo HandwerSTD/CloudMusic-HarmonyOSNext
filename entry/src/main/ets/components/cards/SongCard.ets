@@ -10,7 +10,7 @@ import { PasteboardUtil } from "@pura/harmony-utils"
 import { DownloadDialog } from "../dialog/DownloadDialog"
 import { StorageConstants } from "../../common/constants/StorageConstants"
 import VibratorUtils from "../../common/utils/system/VibratorUtils"
-import { gAppTheme } from "../../common/utils/theme/ThemeUtils"
+import { ThemeManager } from "../../common/utils/theme/ThemeUtils"
 
 @Component
 export struct SongCard {
@@ -71,7 +71,7 @@ export struct SongCard {
             Row({ space: 5 }) {
               Text(this.song.name)
                 .textStyle(16)
-                .fontColor(this.song.id == this.playSong.id ? gAppTheme.colors?.brand : $r('app.color.reverse'))
+                .fontColor(this.song.id == this.playSong.id ? ThemeManager.getTheme().colors?.brand : $r('app.color.reverse'))
                 .fontWeight(this.song.id == this.playSong.id ? FontWeight.Bold : FontWeight.Medium)
               if(this.song.alias.length > 0) {
                 Text(`(${this.song.alias[0]})`)

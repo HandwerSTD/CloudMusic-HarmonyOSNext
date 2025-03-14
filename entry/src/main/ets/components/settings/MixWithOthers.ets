@@ -2,7 +2,7 @@ import Constants from "../../common/constants/Constants"
 import { StorageConstants } from "../../common/constants/StorageConstants"
 import PreferencesUtils from "../../common/utils/data/PreferencesUtils"
 import AVPlayerUtils from "../../common/utils/play/AVPlayerUtils"
-import { gAppTheme } from "../../common/utils/theme/ThemeUtils"
+import { ThemeManager } from "../../common/utils/theme/ThemeUtils"
 
 /**
  * 和其他应用同时播放
@@ -23,7 +23,7 @@ export struct MixWithOthers {
           this.isActived = isOn
           AVPlayerUtils.setAudioSession()
         })
-        .selectedColor(gAppTheme.colors?.brand)
+        .selectedColor(ThemeManager.getTheme().colors?.brand)
     }
     .width('100%')
     .justifyContent(FlexAlign.SpaceBetween)

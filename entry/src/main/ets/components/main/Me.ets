@@ -4,7 +4,7 @@ import Constants from "../../common/constants/Constants"
 import { StorageConstants } from "../../common/constants/StorageConstants"
 import { User, UserClass } from "../../common/entities/User"
 import { initUserInfo } from "../../common/functions/app/appInit"
-import { gAppTheme } from "../../common/utils/theme/ThemeUtils"
+import { themeColors, ThemeManager } from "../../common/utils/theme/ThemeUtils"
 import { CircleImageButton } from "../buttons/CircleButton"
 
 @Component
@@ -86,11 +86,23 @@ export struct Me {
       }
       .itemColumnStyle()
 
+
+      Column() {
+        List() {
+          ForEach(themeColors, (col: string, index) => {
+            this.ItemCard($r('app.media.ic_public_random'), '切换主题 ' + col, () => {
+              ThemeManager.setTheme(index)
+            })
+          })
+        }
+      }
+      .itemColumnStyle()
+
       Column().padding(30)
 
       if(this.isValidAPI && !this.appLoading) {
         if(this.isLogged) {
-          this.LoginButton(gAppTheme.colors?.brand, '退出登录', () => {
+          this.LoginButton(ThemeManager.getTheme().colors?.brand, '退出登录', () => {
             this.LogOut()
           })
         } else {

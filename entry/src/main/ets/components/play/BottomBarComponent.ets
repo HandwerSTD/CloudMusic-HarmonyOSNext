@@ -6,7 +6,7 @@ import { PlayingCover } from "../sheets/PlayingCover"
 import { StorageConstants } from "../../common/constants/StorageConstants"
 import Constants from "../../common/constants/Constants"
 import { curves } from "@kit.ArkUI"
-import { gAppTheme } from "../../common/utils/theme/ThemeUtils"
+import { ThemeManager } from "../../common/utils/theme/ThemeUtils"
 
 /**
  * 底部播控组件
@@ -86,7 +86,7 @@ struct ControlButtons {
     Row({ space: 10 }) {
       // Last
       Image($r('app.media.ic_public_play_last')).buttonImgStyle()
-        .fillColor(gAppTheme.colors?.brand)
+        .fillColor(ThemeManager.getTheme().colors?.brand)
         .onClick(() => {
           playPre()
         })
@@ -94,13 +94,13 @@ struct ControlButtons {
       // Play & Pause
       if (!this.isPaused) {
         Image($r('app.media.ic_public_pause_norm')).buttonImgStyle()
-          .fillColor(gAppTheme.colors?.brand)
+          .fillColor(ThemeManager.getTheme().colors?.brand)
           .onClick(() => {
             pauseMusic()
           })
       } else {
         Image($r('app.media.ic_public_play_norm')).buttonImgStyle()
-          .fillColor(gAppTheme.colors?.brand)
+          .fillColor(ThemeManager.getTheme().colors?.brand)
           .onClick(() => {
           if(!this.isPlaying) playQueue(playQueueUtils.currentQueueIndex)
           else resumeMusic()
@@ -109,12 +109,12 @@ struct ControlButtons {
 
       // Next
       Image($r('app.media.ic_public_play_next')).buttonImgStyle()
-        .fillColor(gAppTheme.colors?.brand)
+        .fillColor(ThemeManager.getTheme().colors?.brand)
         .onClick(() => {
           playNext()
         })
 
-      PlayQueueButton({ imgWidth: 25, imgColor: gAppTheme.colors?.brand })
+      PlayQueueButton({ imgWidth: 25 })
     }
   }
 }

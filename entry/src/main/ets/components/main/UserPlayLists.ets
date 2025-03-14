@@ -153,7 +153,7 @@ export struct UserPlayLists {
   // @Builder TabBarButtonItem(title: string, index: number) {
   //   Button() {
   //     Text(title)
-  //       .fontColor(this.tabsIndex === index ? gAppTheme.colors?.brand : Color.Gray)
+  //       .fontColor(this.tabsIndex === index ? ThemeManager.getTheme().colors?.brand : Color.Gray)
   //       .fontWeight(FontWeight.Medium)
   //   }
   //   .layoutWeight(1)

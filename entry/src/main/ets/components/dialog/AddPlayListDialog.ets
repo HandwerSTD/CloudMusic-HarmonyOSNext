@@ -36,7 +36,7 @@ export struct AddPlayListDialog {
           })
 
         Button('创 建')
-          .backgroundColor(gAppTheme.colors?.brand)
+          .backgroundColor(ThemeManager.getTheme().colors?.brand)
           .onClick(() => {
             this.handleCreate()
           })

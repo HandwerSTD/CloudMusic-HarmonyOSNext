@@ -10,7 +10,7 @@ import { PlayList } from "../../common/entities/PlayList"
 import Constants from "../../common/constants/Constants"
 import { EmitterConstants } from "../../common/constants/EmitterConstants"
 import { cleanLastPlayInfo } from "../../common/functions/play/playListOp"
-import { gAppTheme } from "../../common/utils/theme/ThemeUtils"
+import { ThemeManager } from "../../common/utils/theme/ThemeUtils"
 
 /**
  * 播放列表 Sheet
@@ -133,7 +133,7 @@ export struct PlayQueueSheet {
         Text(`${item.song.name}`)
           .fontSize(16)
           .fontWeight(FontWeight.Medium)
-          .fontColor(this.currentQueueIndex == index ? gAppTheme.colors?.brand : $r('app.color.reverse'))
+          .fontColor(this.currentQueueIndex == index ? ThemeManager.getTheme().colors?.brand : $r('app.color.reverse'))
           .maxLines(1)
           .textOverflow({ overflow: TextOverflow.Ellipsis })
           .width('100%')
@@ -151,7 +151,7 @@ export struct PlayQueueSheet {
           }
           Text(`${item.artists}`)
             .fontSize(12)
-            .fontColor(this.currentQueueIndex == index ? gAppTheme.colors?.brand : Color.Gray)
+            .fontColor(this.currentQueueIndex == index ? ThemeManager.getTheme().colors?.brand : Color.Gray)
             .maxLines(1)
             .textOverflow({ overflow: TextOverflow.Ellipsis })
             .width('100%')

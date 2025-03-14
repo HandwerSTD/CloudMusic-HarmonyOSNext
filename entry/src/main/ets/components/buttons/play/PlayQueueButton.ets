@@ -1,4 +1,5 @@
 import { PlayQueue } from "../../../common/entities/PlayQueue"
+import { ThemeManager } from "../../../common/utils/theme/ThemeUtils"
 import { PlayQueueSheet } from "../../sheets/PlayQueueSheet"
 
 @Component
@@ -8,13 +9,13 @@ export struct PlayQueueButton {
   @StorageProp('bottomRectHeight') bottomRectHeight: number = 0
   @State isShow: boolean = false
   @State imgWidth: number = 30
-  @State imgColor: Color | ResourceStr = $r('app.color.reverse')
+  @State imgColor: Color | boolean = false
 
   build() {
     Button(){
       Image($r('app.media.ic_public_view_list_filled'))
         .width(this.imgWidth)
-        .fillColor(this.imgColor)
+        .fillColor((typeof this.imgColor == "boolean") ? ThemeManager.getTheme().colors?.brand : this.imgColor)
         .draggable(false)
     }
     .stateEffect(false)

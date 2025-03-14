@@ -9,7 +9,7 @@ import { getDailySongs } from '../api/songApi'
 import Constants from '../common/constants/Constants'
 import { resourceManager } from '@kit.LocalizationKit'
 import { StorageConstants } from '../common/constants/StorageConstants'
-import { gAppTheme } from '../common/utils/theme/ThemeUtils'
+import { ThemeManager } from '../common/utils/theme/ThemeUtils'
 
 /**
  * 每日推荐歌单页面
@@ -80,7 +80,7 @@ export struct DailyListPage {
                       if (this.isPlayerLoading) {
                         LoadingProgress().height(35).padding({ left: 30 })
                       } else {
-                        SymbolGlyph($r('sys.symbol.play_round_triangle_fill')).fontSize(36).fontColor([gAppTheme.colors?.brand])
+                        SymbolGlyph($r('sys.symbol.play_round_triangle_fill')).fontSize(36).fontColor([ThemeManager.getTheme().colors?.brand])
                         Text(`播放全部 (${this.list.length})`).fontSize(18).fontWeight(FontWeight.Bold)
                       }
                     }

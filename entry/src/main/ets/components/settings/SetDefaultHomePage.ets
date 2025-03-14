@@ -1,7 +1,7 @@
 import Constants from "../../common/constants/Constants"
 import { StorageConstants } from "../../common/constants/StorageConstants"
 import { changeSettings } from "../../common/functions/app/settings"
-import { gAppTheme } from "../../common/utils/theme/ThemeUtils"
+import { ThemeManager } from "../../common/utils/theme/ThemeUtils"
 
 /**
  * 设置默认页面
@@ -18,7 +18,7 @@ export struct SetDefaultHomePage {
       Row() {
         Radio({ value: '发现', group: 'Radio' })
           .checked(this.selected == 0)
-          .radioStyle({ checkedBackgroundColor: gAppTheme.colors?.brand })
+          .radioStyle({ checkedBackgroundColor: ThemeManager.getTheme().colors?.brand })
           .onClick(() => {
             changeSettings(StorageConstants.DEFAULT_PAGE_INDEX, 0)
           })
@@ -27,7 +27,7 @@ export struct SetDefaultHomePage {
           .padding({ right: 10 })
         Radio({ value: '歌单', group: 'Radio' })
           .checked(this.selected == 1)
-          .radioStyle({ checkedBackgroundColor: gAppTheme.colors?.brand })
+          .radioStyle({ checkedBackgroundColor: ThemeManager.getTheme().colors?.brand })
           .onClick(() => {
             changeSettings(StorageConstants.DEFAULT_PAGE_INDEX, 1)
           })
